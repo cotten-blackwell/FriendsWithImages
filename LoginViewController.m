@@ -17,10 +17,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    if ([UIScreen mainScreen].bounds.size.height == 568) {
-        self.backgroundImageView.image = [UIImage imageNamed:@"loginBackground-568h"];
-    }
+
+// This seems like an iOS or iPhone versioning issue that's causing the background image to not show for iOS 9 / iPhone 6 combo...
+//    if ([UIScreen mainScreen].bounds.size.height == 568) {
+//        self.backgroundImageView.image = [UIImage imageNamed:@"loginBackground-568h"];
+//    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
