@@ -32,18 +32,16 @@
     NSString *email = [self.emailField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
     if ([username length] == 0 || [password length] == 0 || [email length] == 0) {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Make sure you enter a username, password and email address, please!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alertView show];
-        
-        //TODO -- get this sample code to work to replace deprecated UIAlertView above...
+//        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Oops!" message:@"Make sure you enter a username, password and email address, please!" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alertView show];
+//        
         // Show alert immediately
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Oops!" message:@"Make sure you enter a username, password and email address, please!" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *addAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             //[self addDummyView];
         }];
         [alert addAction:addAction];
-        [self presentViewController:alert animated:YES completion:nil];
-        
+        [self presentViewController:alert animated:YES completion:nil];        
     }
     else {
         PFUser *newUser = [PFUser user];
@@ -53,8 +51,15 @@
         
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if (error) {
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry!" message:[error.userInfo objectForKey:@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                [alertView show];
+//                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry!" message:[error.userInfo objectForKey:@"error"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//                [alertView show];
+
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Sorry!" message:[error.userInfo objectForKey:@"error"] preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *addAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                    //[self addDummyView];
+                }];
+                [alert addAction:addAction];
+                [self presentViewController:alert animated:YES completion:nil];
             }
             else {
                 [self.navigationController popToRootViewControllerAnimated:YES];
