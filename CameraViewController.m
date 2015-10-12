@@ -241,9 +241,6 @@ UIColor *disclosureColor2;
             }];
         }
     }];
-    
-    
-    
 }
 
 -(UIImage *)resizeImage:(UIImage *)image toWidth:(float)width andHeight:(float)height {
